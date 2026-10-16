@@ -1,0 +1,15 @@
+import { chromium } from '@playwright/test';
+const b = await chromium.launch({ args: ['--use-angle=swiftshader','--enable-unsafe-swiftshader'] });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 }, acceptDownloads: true });
+await p.goto('http://localhost:5173/?q=high&intro=0');
+await p.waitForFunction(() => window.__TIM?.ready && __TIM.phase==='rest');
+await p.click('#btn-export'); await p.click('#btn-rec');
+await p.waitForTimeout(1500); await p.mouse.click(720, 450); await p.waitForTimeout(2500);
+console.log('indicator:', await p.textContent('#recind'), await p.isVisible('#recind'));
+await p.screenshot({ path: 'qa/recording-indicator-1440x900.png' });
+await p.click('#btn-rec');
+await p.waitForSelector('#dl-rec:not([hidden])', { timeout: 20000 });
+const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#dl-rec')]);
+await dl.saveAs('qa/recording-sample.' + (await dl.suggestedFilename()).split('.').pop());
+console.log('download:', await dl.suggestedFilename(), await p.textContent('#dl-rec'));
+await b.close();

@@ -1,0 +1,12 @@
+import { chromium } from '@playwright/test';
+const [w,h,wait,out,extra] = [+process.argv[2],+process.argv[3],+process.argv[4],process.argv[5],process.argv[6]||''];
+const b = await chromium.launch({ args: ['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist'] });
+const p = await b.newPage({ viewport: { width: w, height: h } });
+p.on('console', m => { if (m.type()==='error') console.log('console:', m.text()); });
+p.on('pageerror', e => console.log('pageerror', e.message));
+await p.goto('http://localhost:5173/?q=high'+extra);
+await p.waitForFunction(() => window.__TIM?.ready, null, { timeout: 60000 });
+await p.waitForTimeout(wait);
+console.log(await p.evaluate(() => JSON.stringify({ phase: __TIM.phase, t: __TIM.simTime, err: __TIM.maxRestErrorPx?.(), fs: __TIM.frameStats?.(), errors: __TIM.errors })));
+await p.screenshot({ path: out });
+await b.close();

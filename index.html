@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>TYPE IS MATTER — EXPERIMENT 001</title>
+<link rel="stylesheet" href="/src/ui/style.css" />
+</head>
+<body>
+<canvas id="gl" aria-label="Interactive physical typography: NOTHING STAYS STILL. Click to push, drag letters."></canvas>
+<div id="ui" class="ui">
+  <div class="tl label"><span>TYPE IS MATTER</span><span>EXPERIMENT 001</span></div>
+  <div class="tr">
+    <span id="camind" class="ind" hidden>CAMERA ACTIVE</span>
+    <span id="recind" class="ind" hidden>REC 00S</span>
+    <button id="btn-sound" type="button" aria-pressed="false">[ SOUND OFF ]</button>
+    <button id="btn-hand" type="button" aria-pressed="false"><span class="full">[ HAND MODE ]</span><span class="short">[ HAND ]</span></button>
+  </div>
+  <div class="bl label"><span>PHYSICAL TYPOGRAPHY</span><span class="hide-m">REAL-TIME EXPERIMENT</span><span>2026</span></div>
+  <div class="bc label"><span class="full">DRAG / PUSH / RELEASE</span><span class="short">DRAG / PUSH</span></div>
+  <div class="br">
+    <div id="exportmenu" class="menu" hidden>
+      <button id="btn-png" type="button">PNG 2400×1500</button>
+      <button id="btn-poster" type="button">POSTER 2400×3000</button>
+      <button id="btn-rec" type="button">RECORD 15S</button>
+      <a id="dl-rec" class="dl" hidden>DOWNLOAD</a>
+    </div>
+    <button id="btn-reset" type="button">[ RESET ]</button>
+    <button id="btn-export" type="button" aria-expanded="false" aria-controls="exportmenu">[ EXPORT ]</button>
+  </div>
+  <div id="caption" class="caption" aria-live="polite"><span>NOTHING IS FIXED.</span><span>TOUCH THE TYPE.</span></div>
+  <div id="note" class="note" role="status"></div>
+</div>
+<div id="fallback" class="fallback" hidden>
+  <div class="fb-type"><span>NOTHING</span><span>STAYS</span><span>STILL</span></div>
+  <p class="label">WEBGL IS UNAVAILABLE ON THIS DEVICE. THIS IS A STATIC FALLBACK OF TYPE IS MATTER / EXPERIMENT 001.</p>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

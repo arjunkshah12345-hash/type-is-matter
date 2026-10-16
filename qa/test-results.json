@@ -1,0 +1,385 @@
+{
+  "config": {
+    "configFile": "/workspace/type-is-matter/playwright.config.ts",
+    "rootDir": "/workspace/type-is-matter/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/workspace/type-is-matter/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/type-is-matter/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 600000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.48.2",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "interactions.spec.ts",
+      "file": "interactions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "10 clicks at different locations: every letter returns within tolerance after each",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 91647,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "click 1 at (0.5,0.5): settled 4.38s sim after impact, max error 0.055px\n"
+                    },
+                    {
+                      "text": "click 2 at (0.3,0.35): settled 4.46s sim after impact, max error 0.053px\n"
+                    },
+                    {
+                      "text": "click 3 at (0.7,0.62): settled 4.32s sim after impact, max error 0.053px\n"
+                    },
+                    {
+                      "text": "click 4 at (0.2,0.7): settled 4.33s sim after impact, max error 0.054px\n"
+                    },
+                    {
+                      "text": "click 5 at (0.82,0.3): settled 4.42s sim after impact, max error 0.054px\n"
+                    },
+                    {
+                      "text": "click 6 at (0.5,0.28): settled 4.80s sim after impact, max error 0.054px\n"
+                    },
+                    {
+                      "text": "click 7 at (0.42,0.75): settled 4.42s sim after impact, max error 0.055px\n"
+                    },
+                    {
+                      "text": "click 8 at (0.62,0.45): settled 4.32s sim after impact, max error 0.055px\n"
+                    },
+                    {
+                      "text": "click 9 at (0.12,0.5): settled 4.39s sim after impact, max error 0.054px\n"
+                    },
+                    {
+                      "text": "click 10 at (0.9,0.85): settled 4.26s sim after impact, max error 0.054px\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:43:57.652Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-7fdc1b2d3b88ead55258",
+          "file": "interactions.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "centre click separates at least 6 letters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4225,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "separated by centre impulse: \u001b[33m6\u001b[39m\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:45:29.428Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-7053da63b73f50aed5d8",
+          "file": "interactions.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "drag a letter across two others: collisions happen, letter stays interactive after release",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 35127,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "letter-letter contact pairs involving dragged S: [ \u001b[32m'7-9'\u001b[39m, \u001b[32m'7-10'\u001b[39m ]\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:45:33.668Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-196e9ae4f63ba39613d6",
+          "file": "interactions.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "60s stability run: no NaN, no runaway velocity, nothing escapes, no uncaught errors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 64494,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "stability: 23 interactions over 60s wall-clock, sim time 21.3s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:46:08.800Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-3950cabd0239696e1c6b",
+          "file": "interactions.spec.ts",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "20s frame-time run (default adaptive quality)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 25787,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "FRAME STATS (software GPU, SwiftShader): {\"n\":106,\"median\":150,\"p95\":533.4000244140625,\"quality\":4,\"dpr\":0.55,\"size\":[792,495]}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:47:13.306Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-778e29a33f62403432d8",
+          "file": "interactions.spec.ts",
+          "line": 104,
+          "column": 1
+        },
+        {
+          "title": "UI controls: export PNG/poster sizes, menu, reset, keyboard focus, hand mode lifecycle",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 28768,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "recording format chosen: {\"mime\":\"video/webm;codecs=vp9\",\"ext\":\"webm\"}\n"
+                    },
+                    {
+                      "text": "hand mode started: true STARTING CAMERA — PROCESSED LOCALLY, NOTHING IS UPLOADED\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:47:39.102Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-251d7592f1cc1270465d",
+          "file": "interactions.spec.ts",
+          "line": 121,
+          "column": 1
+        },
+        {
+          "title": "reduced motion: no intro, stable composition",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3613,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:48:07.882Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-cf92fb4344d58b1a92e7",
+          "file": "interactions.spec.ts",
+          "line": 157,
+          "column": 1
+        },
+        {
+          "title": "static fallback when WebGL is unavailable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 3267,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T15:48:11.501Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3a1181bd00640addebc-a647b6a3842150c3bf0e",
+          "file": "interactions.spec.ts",
+          "line": 169,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T15:43:57.241Z",
+    "duration": 257643.72900000002,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

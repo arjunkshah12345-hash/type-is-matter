@@ -1,0 +1,35 @@
+
+Running 8 tests using 1 worker
+
+(node:182501) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:182501) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+click 1 at (0.5,0.5): settled 4.38s sim after impact, max error 0.055px
+click 2 at (0.3,0.35): settled 4.46s sim after impact, max error 0.053px
+click 3 at (0.7,0.62): settled 4.32s sim after impact, max error 0.053px
+click 4 at (0.2,0.7): settled 4.33s sim after impact, max error 0.054px
+click 5 at (0.82,0.3): settled 4.42s sim after impact, max error 0.054px
+click 6 at (0.5,0.28): settled 4.80s sim after impact, max error 0.054px
+click 7 at (0.42,0.75): settled 4.42s sim after impact, max error 0.055px
+click 8 at (0.62,0.45): settled 4.32s sim after impact, max error 0.055px
+click 9 at (0.12,0.5): settled 4.39s sim after impact, max error 0.054px
+click 10 at (0.9,0.85): settled 4.26s sim after impact, max error 0.054px
+  ✓  1 interactions.spec.ts:16:1 › 10 clicks at different locations: every letter returns within tolerance after each (1.5m)
+separated by centre impulse: [33m6[39m
+  ✓  2 interactions.spec.ts:39:1 › centre click separates at least 6 letters (4.2s)
+letter-letter contact pairs involving dragged S: [ [32m'7-9'[39m, [32m'7-10'[39m ]
+  ✓  3 interactions.spec.ts:48:1 › drag a letter across two others: collisions happen, letter stays interactive after release (35.1s)
+stability: 23 interactions over 60s wall-clock, sim time 21.3s
+  ✓  4 interactions.spec.ts:82:1 › 60s stability run: no NaN, no runaway velocity, nothing escapes, no uncaught errors (1.1m)
+FRAME STATS (software GPU, SwiftShader): {"n":106,"median":150,"p95":533.4000244140625,"quality":4,"dpr":0.55,"size":[792,495]}
+  ✓  5 interactions.spec.ts:104:1 › 20s frame-time run (default adaptive quality) (25.8s)
+recording format chosen: {"mime":"video/webm;codecs=vp9","ext":"webm"}
+hand mode started: true STARTING CAMERA — PROCESSED LOCALLY, NOTHING IS UPLOADED
+  ✓  6 interactions.spec.ts:121:1 › UI controls: export PNG/poster sizes, menu, reset, keyboard focus, hand mode lifecycle (28.8s)
+  ✓  7 interactions.spec.ts:157:1 › reduced motion: no intro, stable composition (3.6s)
+  ✓  8 interactions.spec.ts:169:1 › static fallback when WebGL is unavailable (3.3s)
+
+  Slow test file: interactions.spec.ts (4.3m)
+  Consider splitting slow test files to speed up parallel execution
+  8 passed (4.3m)
