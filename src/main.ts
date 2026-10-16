@@ -32,7 +32,8 @@ function showFallback() { document.getElementById('fallback')!.hidden = false; d
 async function main() {
   if (!webglAvailable() || params.get('nowebgl') === '1') return showFallback();
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || params.get('reduced') === '1';
-  const lockHigh = params.get('q') === 'high';
+  const lockHigh = params.get('q') === 'high' || params.get('fixedstep') === '1';
+  const fixedStep = params.get('fixedstep') === '1'; // deterministic offline capture: advance exactly 1/60 s per call
   const seed = Number(params.get('seed') ?? 1001);
   const rand = makeRng(seed);
 
@@ -340,9 +341,9 @@ async function main() {
   const caption = document.getElementById('caption')!;
   function frame(nowMs: number) {
     if (!running) return;
-    requestAnimationFrame(frame);
+    if (!fixedStep) requestAnimationFrame(frame);
     if (last < 0) last = nowMs;
-    const rdt = (nowMs - last) / 1000; last = nowMs;
+    const rdt = fixedStep ? 1 / 60 : (nowMs - last) / 1000; last = nowMs;
     if (ftN || rdt > 0) { ft[ftHead] = rdt * 1000; ftHead = (ftHead + 1) & 4095; ftN = Math.min(4096, ftN + 1); }
     accumulate(rdt);
     // hand mode
@@ -380,7 +381,8 @@ async function main() {
     events.resetFrame();
     // reflection sweep 2.0–2.6s
     if (!reduced && simTime < 2.8) scene.environmentRotation.y = -0.55 * (1 - smooth((simTime - 2.0) / 0.6));
-    if (!captionShown && simTime >= 2.6) { captionShown = true; caption.classList.add('on'); }
+    if (fixedStep) { const o = smooth((simTime - 2.6) / 1.2); if (Math.abs(+caption.style.opacity - o) > 0.004) { caption.style.transition = 'none'; caption.style.opacity = String(o); } }
+    else if (!captionShown && simTime >= 2.6) { captionShown = true; caption.classList.add('on'); }
     cam.update(Math.min(rdt, 0.05), !reduced && !recSaved);
     if (recorder.active) {
       const e = recorder.elapsed();
@@ -406,9 +408,10 @@ async function main() {
   }
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) { running = false; }
-    else if (!running) { running = true; last = -1; requestAnimationFrame(frame); }
+    else if (!running) { running = true; last = -1; if (!fixedStep) requestAnimationFrame(frame); }
   });
-  requestAnimationFrame(frame);
+  let fakeMs = 0;
+  if (!fixedStep) requestAnimationFrame(frame);
 
   // ---------- test / QA hooks ----------
   const toScreen = (p: THREE.Vector3) => { tmpV.copy(p).project(cam.camera); return { x: (tmpV.x + 1) / 2 * cssW, y: (1 - tmpV.y) / 2 * cssH }; };
@@ -449,6 +452,7 @@ async function main() {
     reduced,
     pauseAt: (t: number) => { pauseAt = t; },
     resume: () => { pauseAt = -1; },
+    advance: (n = 1) => { for (let i = 0; i < n; i++) { fakeMs += 1000 / 60; frame(fakeMs); } return simTime; },
   };
 }
 main().catch((e) => { errors.push(String(e)); console.error(e); showFallback(); });
